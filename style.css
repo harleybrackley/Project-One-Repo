@@ -9,6 +9,13 @@ header {
     font-size: 40px;
 }
 
+h2{
+    margin: 5px;
+}
+
+h5 {
+    margin: 0;
+}
 
 .game-board {
     display: grid;

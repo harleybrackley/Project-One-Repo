@@ -8,19 +8,24 @@
 </head>
 <body>
     
-    <Header>Tic-Tac-Toe!</Header>
+    <Header>
+        <h2>Tic-Tac-Toe!</h2>
+            <h5>Ties: <span class="tie-count">0</span></h3>
+            <h5>Player X: <span class="x-count">0</span></h3>
+            <h5>Player O: <span class="o-count">0</span></h3>
+    </Header>
 
 
     <main class="game-board">
-       <div class="game-square">0</div>
-       <div class="game-square">1</div>
-       <div class="game-square">2</div>
-       <div class="game-square">3</div>
-       <div class="game-square">4</div>
-       <div class="game-square">5</div>
-       <div class="game-square">6</div>
-       <div class="game-square">7</div>
-       <div class="game-square">8</div>
+        <button data-num="0" class="game-square"></button>
+        <button data-num="1" class="game-square"></button>
+        <button data-num="2" class="game-square"></button>
+        <button data-num="3" class="game-square"></button>
+        <button data-num="4" class="game-square"></button>
+        <button data-num="5" class="game-square"></button>
+        <button data-num="6" class="game-square"></button>
+        <button data-num="7" class="game-square"></button>
+        <button data-num="8" class="game-square"></button>
     </main>
 
     <section class="game-winner"></section>
