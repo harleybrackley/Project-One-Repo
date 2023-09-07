@@ -33,7 +33,7 @@ const countTie = document.querySelector('.tie-count');
 let winCountO = 0;
 let winCountX = 0;
 let tieCount = 0
-
+let isWon = false;
 
 // Event listeners
 
@@ -50,17 +50,21 @@ resetButton.addEventListener('click', handleReset)
 
 
 function handleGameSquares(evt) {
+    if (isWon) {
+        return
+    }
     let chosenSquare = evt.target;
     if (chosenSquare.innerText === ""){
         chosenSquare.innerText = currentPlayer;
         playerTurns++;
-        checkWin(currentPlayer);
-        if(playerTurns === 9) {
+        checkWin(currentPlayer)
+        if(!isWon && playerTurns === 9) {
             gameText.innerHTML = 'Tie Game!'
             tieCount++
             countTie.innerHTML = tieCount
             totalRounds++
             roundCounter.innerHTML = totalRounds;
+            isWon = true
         }
         if (currentPlayer === 'X'){
             currentPlayer = 'O'
@@ -71,7 +75,7 @@ function handleGameSquares(evt) {
     } 
 }
 
-// check against winning combos array 
+// check against winning combos array -> win counts
 
 function checkWin(player) {
     for (let i = 0; i < winningCombos.length; i++) {
@@ -79,6 +83,7 @@ function checkWin(player) {
         if(gameSquares[winGame[0]].innerHTML === player 
             && gameSquares[winGame[1]].innerHTML === player 
             && gameSquares[winGame[2]].innerHTML === player) {
+                isWon = true
                 gameText.innerHTML = `Congrats! Player ${player} wins!!`
                 gameSquares.forEach((gameSquare)=>{gameSquare.disabled = true})
                 totalRounds++
@@ -94,6 +99,8 @@ function checkWin(player) {
     }
 }
 
+// Reset everything 
+
 function handleReset() {
     gameSquares.forEach(function(gameSquare){
         gameSquare.disabled = false
@@ -103,4 +110,5 @@ function handleReset() {
     currentPlayer = 'X';
     playerTurns = 0;
     gameText.innerText = "";
+    isWon = false
 }
