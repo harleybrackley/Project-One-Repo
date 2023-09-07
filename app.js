@@ -8,7 +8,8 @@ console.log('Tic-Tac-Toe!');
 const gameSquares = document.querySelectorAll(".game-square");
 const gameBoard = document.querySelector('.game-board');
 const resetButton = document.querySelector('.reset-button');
-const gameText = document.getElementById('game-text')
+const gameText = document.querySelector('.game-text')
+const roundCounter = document.querySelector('.round-count')
 
 const winningCombos = [
     [6, 7, 8],
@@ -23,10 +24,11 @@ const winningCombos = [
 
 let currentPlayer = 'X';
 let playerTurns = 0;
+let totalRounds = 0;
 
-const countO = document.querySelector('.tie-count');
-const countX = document.querySelector('.x-count')
-const countTie = document.querySelector('.o-count')
+const countO = document.querySelector('.o-count');
+const countX = document.querySelector('.x-count');
+const countTie = document.querySelector('.tie-count');
 
 let winCountO = 0;
 let winCountX = 0;
@@ -34,6 +36,8 @@ let tieCount = 0
 
 
 // Event listeners
+
+
 
 for (let square of gameSquares){
     square.addEventListener('click', handleGameSquares)
@@ -47,14 +51,16 @@ resetButton.addEventListener('click', handleReset)
 
 function handleGameSquares(evt) {
     let chosenSquare = evt.target;
-    if (chosenSquare.innerHTML === ""){
-        chosenSquare.innerHTML = currentPlayer;
+    if (chosenSquare.innerText === ""){
+        chosenSquare.innerText = currentPlayer;
         playerTurns++;
         checkWin(currentPlayer);
         if(playerTurns === 9) {
             gameText.innerHTML = 'Tie Game!'
             tieCount++
             countTie.innerHTML = tieCount
+            totalRounds++
+            roundCounter.innerHTML = totalRounds;
         }
         if (currentPlayer === 'X'){
             currentPlayer = 'O'
@@ -70,8 +76,13 @@ function handleGameSquares(evt) {
 function checkWin(player) {
     for (let i = 0; i < winningCombos.length; i++) {
         let winGame = winningCombos[i];
-        if(gameSquares[winGame[0]].innerHTML === player && gameSquares[winGame[1]].innerHTML === player && gameSquares[winGame[2]].innerHTML === player) {
-            gameText.innerHTML = `Congrats! Player ${player} wins!!`
+        if(gameSquares[winGame[0]].innerHTML === player 
+            && gameSquares[winGame[1]].innerHTML === player 
+            && gameSquares[winGame[2]].innerHTML === player) {
+                gameText.innerHTML = `Congrats! Player ${player} wins!!`
+                gameSquares.forEach((gameSquare)=>{gameSquare.disabled = true})
+                totalRounds++
+                roundCounter.innerHTML = totalRounds;
             if (player === 'X'){
                 winCountX++
                 countX.innerHTML = winCountX
@@ -86,10 +97,10 @@ function checkWin(player) {
 function handleReset() {
     gameSquares.forEach(function(gameSquare){
         gameSquare.disabled = false
-        gameSquare.innerHTML = ""
+        gameSquare.innerText = ""
 
     })
     currentPlayer = 'X';
-    turns = 0;
-    gameText.innerHTML = "";
+    playerTurns = 0;
+    gameText.innerText = "";
 }
