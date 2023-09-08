@@ -22,3 +22,5 @@
 
 ## Future Updates
 - Planned future updates to make the playable characters Barbie & Ken instead of X & O
+- Selectable starting character
+- show who's turn it is somewhere on screen
