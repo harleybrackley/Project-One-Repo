@@ -2,6 +2,7 @@
 
 ## [Tic-Tac-Toe! Click here to play!](https://harleybrackley.github.io/Project-One-Repo/)
 
+![screenshot](/Images/tic-tac-toe_screenshot.png)
 
 ## About
 - Simple Tic-Tac-Toe game.
