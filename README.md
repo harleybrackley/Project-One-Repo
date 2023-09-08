@@ -15,7 +15,7 @@
 - HTML, CSS, Javascript
 
 ## Bugs to fix
-- Need to find a workaround for game counting a 9 click win for either side as a tie
+- No known bugs at the moment woohoo!
 
 ## Lessons learnt
 - Still getting the hang of for of and for each loops, need to keep it simple until I understand what I am doing better.

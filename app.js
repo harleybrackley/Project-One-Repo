@@ -75,7 +75,7 @@ function handleGameSquares(evt) {
     } 
 }
 
-// check against winning combos array -> win counts
+// check winning combos -> win counts
 
 function checkWin(player) {
     for (let i = 0; i < winningCombos.length; i++) {
